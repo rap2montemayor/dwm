@@ -2,6 +2,7 @@
 
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
+static const unsigned int gappx     = 30;       /* gaps between windows */
 static const unsigned int snap      = 8;        /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
@@ -81,7 +82,7 @@ static Key keys[] = {
 //	{ MODKEY,                       XK_Left,   focusstack,     {.i = -1 } },
 
 	/* Master */
-	{ Mod1Mask,             XK_Return, zoom,           {0} },
+	{ Mod1Mask,                     XK_Return, zoom,           {0} },
 	{ MODKEY|ShiftMask,             XK_equal,  incnmaster,     {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_minus,  incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_equal,  setmfact,       {.f = +0.02} },
@@ -102,6 +103,11 @@ static Key keys[] = {
 //	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 //	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 //	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+
+    /* Gaps */
+	{ Mod1Mask,                       XK_minus,  setgaps,        {.i = -10 } },
+	{ Mod1Mask,                       XK_equal,  setgaps,        {.i = +10 } },
+	{ Mod1Mask,                       XK_0,      setgaps,        {.i = 0   } },
 
 	/* Tags */
 	TAGKEYS(                        XK_1,                      0)

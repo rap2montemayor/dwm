@@ -71,13 +71,17 @@ static Key keys[] = {
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 
 	/* Focusing */
-	{ MODKEY,                       XK_Down,   focusstack,     {.i = +1 } },
-	{ MODKEY,                       XK_Right,  focusstack,     {.i = +1 } },
-	{ MODKEY,                       XK_Up,     focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_Left,   focusstack,     {.i = -1 } },
+	{ Mod1Mask,                     XK_Tab,    focusstack,     {.i = +1 } },
+	{ Mod1Mask|ShiftMask,           XK_Tab,    focusstack,     {.i = -1 } },
+
+//	{ MODKEY,                       XK_Down,   focusstack,     {.i = +1 } },
+//	{ MODKEY,                       XK_Right,  focusstack,     {.i = +1 } },
+
+//	{ MODKEY,                       XK_Up,     focusstack,     {.i = -1 } },
+//	{ MODKEY,                       XK_Left,   focusstack,     {.i = -1 } },
 
 	/* Master */
-	{ MODKEY|Mod1Mask,              XK_Return, zoom,           {0} },
+	{ MODKEY|ShiftMask,             XK_Return, zoom,           {0} },
 	{ MODKEY|ShiftMask,             XK_equal,  incnmaster,     {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_minus,  incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_equal,  setmfact,       {.f = +0.02} },

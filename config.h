@@ -65,6 +65,7 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = {"dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
 
+#include "movestack.c"
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 
@@ -80,8 +81,12 @@ static Key keys[] = {
 	{ Mod1Mask,                     XK_Tab,    focusstack,     {.i = +1 } },
 	{ Mod1Mask|ShiftMask,           XK_Tab,    focusstack,     {.i = -1 } },
 
-	/* Master */
+    /* Moving */
 	{ Mod1Mask,                     XK_Return, zoom,           {0} },
+    { MODKEY,                       XK_Tab,    movestack,      {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_Tab,    movestack,      {.i = -1 } },
+
+	/* Master */
 	{ MODKEY|ShiftMask,             XK_equal,  incnmaster,     {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_minus,  incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_equal,  setmfact,       {.f = +0.02} },

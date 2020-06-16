@@ -1505,8 +1505,8 @@ setgaps(const Arg *arg)
 {
 	if (arg->i == 0)
 		selmon->gappx = 30;
-    else if (selmon->gappx + arg->i < 0)
-        selmon->gappx = 0;
+	else if (selmon->gappx + arg->i < 0)
+		selmon->gappx = 0;
 	else
 		selmon->gappx += arg->i;
 	arrange(selmon);
@@ -1706,7 +1706,7 @@ tile(Monitor *m)
 			resize(c, m->wx + m->gappx, m->wy + my, mw - (2*c->bw) - m->gappx, h - (2*c->bw), 0);
 			my += HEIGHT(c) + m->gappx;
 		} else {
-            			h = (m->wh - ty) / (n - i) - m->gappx;
+   			h = (m->wh - ty) / (n - i) - m->gappx;
 			resize(c, m->wx + mw + m->gappx, m->wy + ty, m->ww - mw - (2*c->bw) - 2*m->gappx, h - (2*c->bw), 0);
 			ty += HEIGHT(c) + m->gappx;
 		}

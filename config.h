@@ -8,6 +8,8 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Inconsolata:size=12" };
 static const char dmenufont[]       = "Inconsolata:size=10";
+
+/* colors */
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
@@ -15,6 +17,7 @@ static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#005577";
 static const char col_white[]       = "#ffffff";
 static const char col_black[]       = "#000000";
+
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_black },
@@ -76,12 +79,6 @@ static Key keys[] = {
 	/* Focusing */
 	{ Mod1Mask,                     XK_Tab,    focusstack,     {.i = +1 } },
 	{ Mod1Mask|ShiftMask,           XK_Tab,    focusstack,     {.i = -1 } },
-
-//	{ MODKEY,                       XK_Down,   focusstack,     {.i = +1 } },
-//	{ MODKEY,                       XK_Right,  focusstack,     {.i = +1 } },
-
-//	{ MODKEY,                       XK_Up,     focusstack,     {.i = -1 } },
-//	{ MODKEY,                       XK_Left,   focusstack,     {.i = -1 } },
 
 	/* Master */
 	{ Mod1Mask,                     XK_Return, zoom,           {0} },

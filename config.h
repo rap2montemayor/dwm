@@ -86,8 +86,8 @@ static Key keys[] = {
 
     /* Moving */
 	{ Mod1Mask,                     XK_Return, zoom,           {0} },
-    { MODKEY,                       XK_Tab,    movestack,      {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_Tab,    movestack,      {.i = -1 } },
+    { MODKEY|ShiftMask,             XK_Tab,    movestack,      {.i = +1 } },
+	{ MODKEY,                       XK_Tab,    movestack,      {.i = -1 } },
 
 	/* Master */
 	{ MODKEY|ShiftMask,             XK_equal,  incnmaster,     {.i = +1 } },

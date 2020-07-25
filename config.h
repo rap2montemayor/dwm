@@ -45,11 +45,18 @@ static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] 
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 
+#include "fibonacci.c"
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[]=",      tile },    /* first entry is default */
-	{ "><>",      NULL },    /* no layout function means floating behavior */
+	{ "[]=",      tile },
+	{ "[@]",      spiral },
+	{ "[\\]",     dwindle },
+	{ "|M|",      centeredmaster },
+	{ "<M>",      centeredfloatingmaster },
+	/* unused
+	{ "><>",      NULL },
 	{ "[M]",      monocle },
+	*/
 };
 
 /* key definitions */
@@ -95,22 +102,32 @@ static Key keys[] = {
 	{ MODKEY,                       XK_equal,  setmfact,       {.f = +0.02} },
 	{ MODKEY,                       XK_minus,  setmfact,       {.f = -0.02} },
 
-//	{ MODKEY,                       XK_Tab,    view,           {0} },
-
+/*
+	{ MODKEY,                       XK_Tab,    view,           {0} },
+*/
 	/* Layouts */
-	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-//	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
-	{ MODKEY,                       XK_f,      togglefullscr,  {0} },
-	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-//	{ MODKEY|ControlMask,           XK_space,  setlayout,      {0} },
-//	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
+	/* tile */
+	{ MODKEY,                       XK_a,      setlayout,      {.v = &layouts[0]} },
+	/* spiral */
+	{ MODKEY,                       XK_s,      setlayout,      {.v = &layouts[1]} },
+	{ MODKEY|ShiftMask,             XK_s,      setlayout,      {.v = &layouts[2]} },
+	/* center */
+	{ MODKEY,                       XK_d,      setlayout,      {.v = &layouts[3]} },
+	{ MODKEY|ShiftMask,             XK_d,      setlayout,      {.v = &layouts[4]} },
 
-//	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
-//	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
-//	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
-//	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
-//	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
-//	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+	{ MODKEY,                       XK_f,      togglefullscr,  {0} },
+
+/*
+	{ MODKEY|ControlMask,           XK_space,  setlayout,      {0} },
+	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
+
+	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
+	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
+	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
+	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+*/
 
     /* Gaps */
 	{ Mod1Mask,                       XK_minus,  setgaps,        {.i = -10 } },

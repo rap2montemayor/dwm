@@ -7,8 +7,8 @@ static const unsigned int snap      = 8;        /* snap pixel */
 static const int swallowfloating    = 1;        /* 1 means swallow floating windows by default */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Inconsolata:size=12" };
-static const char dmenufont[]       = "Inconsolata:size=10";
+static const char *fonts[]          = { "Inconsolata:size=12:charwidth=9" };
+static const char dmenufont[]       = "Inconsolata:size=12:charwidth=9";
 
 /* colors */
 static const char col_gray1[]       = "#222222";

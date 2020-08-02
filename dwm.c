@@ -2429,14 +2429,24 @@ centeredmaster(Monitor *m)
 			/* nmaster clients are stacked vertically, in the center
 			 * of the screen */
 			h = (m->wh - my) / (MIN(n, m->nmaster) - i) - m->gappx;
-			resize(
-				c,
-				m->wx + mx,
-				m->wy + my,
-				mw - (2*c->bw),
-				h - (2*c->bw),
-				0
-			);
+			if (n <= m->nmaster)
+				resize(
+					c,
+					m->wx + mx,
+					m->wy + my,
+					mw - (2*c->bw) - 2*m->gappx,
+					h - (2*c->bw),
+					0
+				);
+			else
+				resize(
+					c,
+					m->wx + mx,
+					m->wy + my,
+					mw - (2*c->bw),
+					h - (2*c->bw),
+					0
+				);
 			my += HEIGHT(c) + m->gappx;
 		} else {
 			/* stack clients are stacked vertically */
@@ -2453,14 +2463,24 @@ centeredmaster(Monitor *m)
 				ety += HEIGHT(c) + m->gappx;
 			} else {
 				h = (m->wh - oty) / ((1 + n - i) / 2) - m->gappx;
-				resize(
-					c,
-					m->wx + mx + mw + m->gappx,
-					m->wy + oty + m->gappx,
-					tw - (2*c->bw) - 2*m->gappx,
-					h - (2*c->bw) - m->gappx,
-					0
-				);
+				if (n == m->nmaster+1)
+					resize(
+						c,
+						m->wx + mx + mw + m->gappx,
+						m->wy + oty + m->gappx,
+						tw - (2*c->bw) - 3*m->gappx,
+						h - (2*c->bw) - m->gappx,
+						0
+					);
+				else
+					resize(
+						c,
+						m->wx + mx + mw + m->gappx,
+						m->wy + oty + m->gappx,
+						tw - (2*c->bw) - 2*m->gappx,
+						h - (2*c->bw) - m->gappx,
+						0
+					);
 				oty += HEIGHT(c) + m->gappx;
 			}
 		}

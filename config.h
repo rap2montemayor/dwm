@@ -2,7 +2,7 @@
 
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
-static const unsigned int gappx     = 30;       /* gaps between windows */
+static const unsigned int gappx     = 20;       /* gaps between windows */
 static const unsigned int snap      = 8;        /* snap pixel */
 static const int swallowfloating    = 1;        /* 1 means swallow floating windows by default */
 static const int showbar            = 1;        /* 0 means no bar */
@@ -21,8 +21,8 @@ static const char col_black[]       = "#000000";
 
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_black },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_white },
+	[SchemeNorm] = { col_gray3, col_black, col_black },
+	[SchemeSel]  = { col_gray4, col_black, col_cyan },
 };
 
 /* tagging */
@@ -82,7 +82,7 @@ static Key keys[] = {
 	/* Spawning/Closing */
 	{ MODKEY,                       XK_space,  spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_q,      killclient,     {0} },
+	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} },
 	
 	/* Bar */
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
@@ -133,8 +133,8 @@ static Key keys[] = {
 */
 
     /* Gaps */
-	{ Mod1Mask,                       XK_minus,  setgaps,        {.i = -10 } },
-	{ Mod1Mask,                       XK_equal,  setgaps,        {.i = +10 } },
+	{ Mod1Mask,                       XK_minus,  setgaps,        {.i = +10 } },
+	{ Mod1Mask,                       XK_equal,  setgaps,        {.i = -10 } },
 	{ Mod1Mask,                       XK_0,      setgaps,        {.i = 0   } },
 
 	/* Tags */
